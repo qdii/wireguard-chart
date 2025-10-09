@@ -33,4 +33,7 @@ spec:
   {{- if and .Values.service.loadBalancerClass (semverCompare ">=1.24-0" .Capabilities.KubeVersion.Version) }}
   loadBalancerClass: {{ .Values.service.loadBalancerClass }}
   {{- end }}
+  {{- if .Values.service.ipFamilyPolicy }}
+  ipFamilyPolicy: {{ .Values.service.ipFamilyPolicy }}
+  {{- end }}
 {{- end }}
