@@ -85,6 +85,8 @@ wireguard:
     #   PublicKey: QTxoajwVHWZ7qqVwY2F9T1L04M0j5GSNC15++LZw1iA=
     #   # Normally PersistentKeepalive is not required
     #   #PersistentKeepalive: 25
+  # -- If true, calls sysctl -w net.ipv6.conf.all.forwarding=1
+  forwardIPv6: false
 securityContext:
   runAsNonRoot: true
   runAsUser: 1000
@@ -110,6 +112,8 @@ service:
   extraPorts: []
   # -- loadBalancerClass for Service Controllers that support it
   loadBalancerClass: ""
+  # -- ipFamilyPolicy enables single or dual stack services
+  ipFamilyPolicy: "SingleStack"
 # -- Name of a secret with a wireguard private key on key privatekey, if not provided on first install a hook generates one.
 secretName: ~
 replicaCount: 3
